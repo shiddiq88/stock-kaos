@@ -1,14 +1,30 @@
 var db = firebase.database().ref('stock');
+tulisData('qty')
+let elPilihan = document.getElementById('pilihan-size')
+let el = document.getElementById("content")
 
-db.orderByChild('qty').on('value', snap => {
-    let el = document.getElementById("content")
-    el.innerHTML = '';
-    let data = snap.val();
-    snap.forEach(e => {
-        let elChild = document.createElement('div')
-        elChild.classList.add("col-4", "p-0")
-        elChild.innerHTML =
-            `<div class="card text-center m-0">
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function reWrite() {
+    el.innerHTML = '<img id="loading" src="ajax-loader.gif" class="mx-auto d-block">';
+    await sleep(500)
+    tulisData(elPilihan.value)
+}
+
+elPilihan.addEventListener('change', reWrite)
+
+function tulisData(size) {
+
+    db.orderByChild('qty').on('value', snap => {
+        el.innerHTML = '';
+        let data = snap.val();
+        snap.forEach(e => {
+            if (data[e.key][size] > 0) {
+                let elChild = document.createElement('div')
+                elChild.classList.add("col-4", "p-0")
+                elChild.innerHTML =
+                    `<div class="card text-center m-0">
                 <div class="card-header">
                             ${e.key}
                 </div>
@@ -36,6 +52,8 @@ db.orderByChild('qty').on('value', snap => {
                     </table>
                 </div>
             </div>`
-        el.insertBefore(elChild, el.firstChild)
-    })
-});
+                el.insertBefore(elChild, el.firstChild)
+            }
+        })
+    });
+}
