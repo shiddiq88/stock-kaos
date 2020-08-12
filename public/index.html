@@ -7,36 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda+One&display=swap" rel="stylesheet">
     <style>
     body {
         background-color: lightgrey;
+        font-family: 'Merienda One', cursive;
 
     }
 
     table {
         font-size: 60%;
     }
+
+    select {
+        position: fixed;
+        right: 35px;
+        bottom: 45px;
+        z-index: 100;
+    }
     </style>
     <title>stock 3point</title>
 </head>
 
 <body>
-    <div class="row">
-        <div class="col-9">
-            <h4 class="text-center">stock kaos 3point</h4>          
-        </div>
-        <div class="col-3">
-            <select class="form-control form-control-sm" id="pilihan-size">
-                <option value="qty">All</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
-                <option value="XXL">XXL</option>
-            </select>
-        </div>
-    </div>
-    <div id="content" class="row p-0">
+    <h3 class="text-center mt-3 mb-3">STOCK KAOS 3POINT</h3>
+    <select class="btn btn-primary" id="pilihan-size">
+        <option value="qty">All</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+    </select>
+    <div id="content" class="row p-0 mb-5">
         <img id="loading" src="ajax-loader.gif" class="mx-auto d-block" alt="...">
     </div>
     <!-- Optional JavaScript -->

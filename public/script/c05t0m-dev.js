@@ -16,13 +16,13 @@ elPilihan.addEventListener('change', reWrite)
 
 function tulisData(size) {
 
-    db.orderByChild('qty').on('value', snap => {
+    db.orderByChild(size).on('value', snap => {
         el.innerHTML = '';
         let data = snap.val();
         snap.forEach(e => {
             if (data[e.key][size] > 0) {
                 let elChild = document.createElement('div')
-                elChild.classList.add("col-4", "p-0")
+                elChild.classList.add("col-4")
                 elChild.innerHTML =
                     `<div class="card text-center m-0">
                 <div class="card-header">
